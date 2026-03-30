@@ -1,0 +1,28 @@
+# This workflow is for scheduling and running Python automation tasks.
+
+name: Automation Metrics GMT
+
+on:
+  schedule:
+    - cron: '0 4 * * *' # Runs every day at 04:00 UTC
+
+jobs:
+  run-python-tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run automation tasks
+        run: |
+          python your_script.py
