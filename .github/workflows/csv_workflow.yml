@@ -1,0 +1,1 @@
+name: CSV Workflow \n\non:  \n  push:  \n    branches:  \n      - main  \n  schedule:  \n    - cron: '0 * * * *'  \n  workflow_dispatch:  \n\njobs:  \n  run_csv:  \n    runs-on: ubuntu-latest  \n    steps:  \n      - name: Checkout repository  \n        uses: actions/checkout@v2  \n      - name: Run CSV Workflow  \n        run: python csv_workflow.py  \n
